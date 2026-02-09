@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel Administrativo - Chamadas</title>
+  <link rel="stylesheet" href="adm.css" />
+</head>
+<body>
+  <header class="adm-top-header">
+    <div class="adm-top-header-content">
+      <div class="adm-top-logo">
+        <div class="adm-logo-circle">
+          <div class="adm-logo-text">CMS</div>
+        </div>
+        <div class="adm-top-title">
+          <h1>Clínica Multiprofissional de Saúde</h1>
+          <span class="adm-top-subtitle">Painel Administrativo</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="adm-container">
+    <header class="adm-header">
+      <h2>Gerenciamento de Chamadas</h2>
+      <button id="btn-config" class="btn btn-secondary">Configurações</button>
+    </header>
+
+    <main class="adm-main">
+      <div class="form-group">
+        <label for="senha-input">Senha</label>
+        <input
+          type="text"
+          id="senha-input"
+          placeholder="Ex: 001"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="servico-select">Serviço</label>
+        <select id="servico-select">
+          <!-- Opções preenchidas via JS -->
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button id="btn-ok" class="btn btn-primary">OK</button>
+      </div>
+
+      <section class="ultima-chamada">
+        <h2>Última chamada enviada</h2>
+        <p id="ultima-chamada-texto">Nenhuma chamada ainda.</p>
+      </section>
+
+      <section class="historico-adm">
+        <div class="historico-adm-header">
+          <h2>Histórico de chamadas</h2>
+          <button id="btn-limpar-historico" class="btn btn-danger btn-small">
+            Apagar histórico
+          </button>
+        </div>
+        <div class="historico-adm-tabela-wrapper">
+          <table class="historico-adm-tabela">
+            <thead>
+              <tr>
+                <th>Senha</th>
+                <th>Serviço</th>
+                <th>Faixa</th>
+                <th>Data / Hora</th>
+              </tr>
+            </thead>
+            <tbody id="historico-adm-tbody">
+              <!-- Preenchido via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="quadro-atendimento">
+        <div class="quadro-atendimento-header">
+          <h2>Quadro de atendimento por status</h2>
+          <span class="quadro-legenda">
+            Clique em uma senha para mudar o status / faixa.
+          </span>
+        </div>
+        <div id="quadro-colunas" class="quadro-colunas">
+          <!-- Colunas preenchidas via JS -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal de alteração de faixa/status -->
+  <div id="status-modal" class="modal hidden">
+    <div class="modal-content modal-status-content">
+      <header class="modal-header">
+        <h2>Alterar status da senha</h2>
+        <button id="status-modal-close" class="modal-close">&times;</button>
+      </header>
+
+      <main class="modal-body modal-status-body">
+        <p id="status-modal-info" class="status-modal-info"></p>
+
+        <div class="form-group">
+          <label for="status-select">Novo status / faixa</label>
+          <select id="status-select">
+            <!-- Opções preenchidas via JS -->
+          </select>
+        </div>
+
+        <div class="form-actions modal-status-actions">
+          <button id="status-confirmar" class="btn btn-primary btn-small">
+            Confirmar
+          </button>
+          <button id="status-cancelar" class="btn btn-secondary btn-small">
+            Cancelar
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal de Configurações -->
+  <div id="config-modal" class="modal hidden">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h2>Configurações de Serviços</h2>
+        <button id="modal-close" class="modal-close">&times;</button>
+      </header>
+
+      <main class="modal-body">
+        <form id="servico-form">
+          <div class="form-group">
+            <label for="servico-nome">Nome do serviço</label>
+            <input
+              type="text"
+              id="servico-nome"
+              placeholder="Ex: Audiometria"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="servico-faixa">Faixa / Status</label>
+            <input
+              type="text"
+              id="servico-faixa"
+              placeholder="Ex: Faixa Amarela"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="servico-cor">Cor do status</label>
+            <input
+              type="color"
+              id="servico-cor"
+              value="#facc15"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Adicionar / Salvar</button>
+          <button type="button" id="cancelar-edicao" class="btn btn-secondary hidden">
+            Cancelar edição
+          </button>
+        </form>
+
+        <section class="lista-servicos">
+          <h3>Serviços cadastrados</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Serviço</th>
+                <th>Faixa</th>
+                <th>Cor</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="servicos-tbody">
+              <!-- Linhas de serviços via JS -->
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="adm.js"></script>
+</body>
+</html>

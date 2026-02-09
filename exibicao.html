@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel de Chamadas - Exibição</title>
+  <link rel="stylesheet" href="exibicao.css" />
+</head>
+<body>
+  <div class="tv-container">
+    <header class="tv-header">
+      <div class="tv-brand">
+        <div class="tv-logo">
+          <div class="logo-circle">
+            <div class="logo-text-main">CMS</div>
+          </div>
+        </div>
+        <div class="tv-title-block">
+          <h1>Painel de Chamadas</h1>
+          <span class="subtitle">Aguarde ser chamado pelo painel</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="tv-main">
+      <section class="tv-atual">
+        <div class="tv-atual-inner">
+          <div class="tv-label">Senha atual</div>
+          <div id="tv-senha" class="tv-senha">---</div>
+          <div id="tv-servico" class="tv-servico">Nenhuma chamada ainda</div>
+          <div id="tv-faixa" class="tv-faixa"></div>
+        </div>
+      </section>
+
+      <aside class="tv-historico">
+        <h2>Chamadas recentes</h2>
+        <ul id="tv-historico-lista" class="tv-historico-lista">
+          <!-- Itens via JS -->
+        </ul>
+      </aside>
+    </main>
+  </div>
+
+  <script src="exibicao.js"></script>
+</body>
+</html>
